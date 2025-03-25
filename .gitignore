@@ -1,0 +1,22 @@
+# .NET Core
+backend/**/[Bb]in/
+backend/**/[Oo]bj/
+backend/**/.vs/
+backend/**/appsettings.Development.json  # Exclude local dev settings
+backend/**/launchSettings.json           # Optional: Exclude if not shared
+
+# React
+frontend/node_modules/
+frontend/build
+frontend/.env
+frontend/.cache/
+frontend/.eslintcache
+
+# IDE & Tools
+.vscode/
+.idea/
+*.user
+*.suo
+*.log
+*.sqlite
+.DS_Store
