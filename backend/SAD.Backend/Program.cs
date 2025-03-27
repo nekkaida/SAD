@@ -1,18 +1,28 @@
+using Microsoft.OpenAPI.Models; // To import the OpenAPI/Swagger models
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
 builder.Services.AddOpenApi();
 
+// Add Swagger services
+builder.Services.AddEndpointsApiExplorer();
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SAD API", Version = "v1"});
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.MapOpenApi();
+    app.UseSwagger(); // Enable the OpenAPI spec
+    app.UseSwaggerUI(); // Enable the Swagger UI webpage
 }
 
-// app.UseHttpsRedirection();
+app.UseHttpsRedirection();
 
 var summaries = new[]
 {
